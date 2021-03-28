@@ -1,0 +1,1329 @@
+{
+    "dashboard": {
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": "-- Grafana --",
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "editable": true,
+        "gnetId": null,
+        "graphTooltip": 0,
+        "id": null,
+        "links": [],
+        "panels": [
+            {
+                "collapsed": false,
+                "datasource": null,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 4,
+                "panels": [],
+                "title": "Monthly Summary",
+                "type": "row"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#7400b8",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "displayName": "Calories ⚡",
+                        "mappings": [],
+                        "noValue": "-",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": []
+                        },
+                        "unit": "kcal"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 9,
+                    "x": 0,
+                    "y": 1
+                },
+                "id": 2,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "auto",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": ["sum"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "text": {
+                        "titleSize": 3
+                    },
+                    "textMode": "value"
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  calories\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["calories"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "timeFrom": null,
+                "timeShift": null,
+                "title": "Total Calories Consumed ⚡",
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "description": "",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#7374d4",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": []
+                        },
+                        "unit": "massg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 5,
+                    "x": 9,
+                    "y": 1
+                },
+                "id": 6,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "auto",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": ["sum"],
+                        "fields": "/^carbohydrates$/",
+                        "values": false
+                    },
+                    "text": {},
+                    "textMode": "auto"
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  carbohydrates\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["carbohydrates"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Total Carbohydrates 🍞",
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#48bfe3",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 5,
+                    "x": 14,
+                    "y": 1
+                },
+                "id": 8,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "auto",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": ["sum"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "text": {},
+                    "textMode": "auto"
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  fat\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["fat"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Total Fat 🧀",
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "description": "",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#56cfe1",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massmg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 5,
+                    "x": 19,
+                    "y": 1
+                },
+                "id": 12,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "auto",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": ["sum"],
+                        "fields": "/^sodium$/",
+                        "values": false
+                    },
+                    "text": {},
+                    "textMode": "auto"
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  sodium\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["sodium"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Total Sodium 🧂",
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#4ea8de",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 5,
+                    "x": 9,
+                    "y": 5
+                },
+                "id": 10,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "auto",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": ["sum"],
+                        "fields": "/^protein$/",
+                        "values": false
+                    },
+                    "text": {},
+                    "textMode": "auto"
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  protein\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["protein"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Total Protein 🍖",
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#56cfe1",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 5,
+                    "x": 19,
+                    "y": 5
+                },
+                "id": 14,
+                "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "auto",
+                    "orientation": "auto",
+                    "reduceOptions": {
+                        "calcs": ["sum"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "text": {},
+                    "textMode": "auto"
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  sugar\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["sugar"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Total Sugar 🍬",
+                "transparent": true,
+                "type": "stat"
+            },
+            {
+                "collapsed": false,
+                "datasource": null,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 9
+                },
+                "id": 24,
+                "panels": [],
+                "title": "Daily Summary",
+                "type": "row"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#7400b8",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "kcal"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 9,
+                    "x": 0,
+                    "y": 10
+                },
+                "id": 16,
+                "options": {
+                    "reduceOptions": {
+                        "calcs": ["mean"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showThresholdLabels": false,
+                    "showThresholdMarkers": false,
+                    "text": {}
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  calories\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": ["calories"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Average Calories Consumed ⚡",
+                "transparent": true,
+                "type": "gauge"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#7374d4",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 5,
+                    "x": 9,
+                    "y": 10
+                },
+                "id": 18,
+                "options": {
+                    "reduceOptions": {
+                        "calcs": ["mean"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showThresholdLabels": false,
+                    "showThresholdMarkers": false,
+                    "text": {}
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  carbohydrates\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["carbohydrates"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Average Carbohydrates 🍞",
+                "transparent": true,
+                "type": "gauge"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#48bfe3",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 5,
+                    "x": 14,
+                    "y": 10
+                },
+                "id": 19,
+                "options": {
+                    "reduceOptions": {
+                        "calcs": ["mean"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showThresholdLabels": false,
+                    "showThresholdMarkers": false,
+                    "text": {}
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  fat\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["fat"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Average Fat 🧀",
+                "transparent": true,
+                "type": "gauge"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#56cfe1",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massmg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 5,
+                    "x": 19,
+                    "y": 10
+                },
+                "id": 21,
+                "options": {
+                    "reduceOptions": {
+                        "calcs": ["mean"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showThresholdLabels": false,
+                    "showThresholdMarkers": false,
+                    "text": {}
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  sodium\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["sodium"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Average Sodium 🧂",
+                "transparent": true,
+                "type": "gauge"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#4ea8de",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 5,
+                    "x": 9,
+                    "y": 14
+                },
+                "id": 20,
+                "options": {
+                    "reduceOptions": {
+                        "calcs": ["mean"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showThresholdLabels": false,
+                    "showThresholdMarkers": false,
+                    "text": {}
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  protein\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["protein"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Average Protein 🍖",
+                "transparent": true,
+                "type": "gauge"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#64dfdf",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "massg"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 4,
+                    "w": 5,
+                    "x": 19,
+                    "y": 14
+                },
+                "id": 22,
+                "options": {
+                    "reduceOptions": {
+                        "calcs": ["mean"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showThresholdLabels": false,
+                    "showThresholdMarkers": false,
+                    "text": {}
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  sugar\nFROM meals\nWHERE\n  $__timeFilter(date)\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["sugar"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "title": "Average Sugar 🍬",
+                "transparent": true,
+                "type": "gauge"
+            },
+            {
+                "aliasColors": {
+                    "Calories": "#7400b8"
+                },
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "PostgreSQL",
+                "decimals": 0,
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {},
+                        "custom": {},
+                        "displayName": "Calories",
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": []
+                        },
+                        "unit": "none"
+                    },
+                    "overrides": []
+                },
+                "fill": 3,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 9,
+                    "w": 24,
+                    "x": 0,
+                    "y": 18
+                },
+                "hiddenSeries": false,
+                "id": 28,
+                "legend": {
+                    "alignAsTable": false,
+                    "avg": false,
+                    "current": false,
+                    "hideZero": false,
+                    "max": false,
+                    "min": false,
+                    "rightSide": false,
+                    "show": false,
+                    "total": true,
+                    "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.4.3",
+                "pointradius": 2,
+                "points": true,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [
+                            {
+                                "params": ["date"],
+                                "type": "column"
+                            }
+                        ],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": false,
+                        "rawSql": "SELECT\n  date AS \"time\",\n  sum(calories) AS \"calories\"\nFROM meals\nWHERE\n  $__timeFilter(date)\nGROUP BY date\nORDER BY 1",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["calories"],
+                                    "type": "column"
+                                },
+                                {
+                                    "params": ["sum"],
+                                    "type": "aggregate"
+                                },
+                                {
+                                    "params": ["calories"],
+                                    "type": "alias"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Calories Consumed ⚡",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "transparent": true,
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                        "$$hashKey": "object:889",
+                        "decimals": 0,
+                        "format": "none",
+                        "label": "Calories (kcal)",
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    },
+                    {
+                        "$$hashKey": "object:890",
+                        "format": "short",
+                        "label": null,
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+            },
+            {
+                "aliasColors": {
+                    "Caesar salad - Salad, 1 plate": "#72efdd",
+                    "Pizza Pizza - Small Cheese Pizza, 1 container (6 slice)": "#4ea8de",
+                    "Pizza Pizza - Small Cheese Pizza, 1 slice": "#7374d4",
+                    "Quick Add, 1 serving(s)": "#7400b8",
+                    "bubba burger - Burger, 1 burger": "#56cfe1"
+                },
+                "breakPoint": "25%",
+                "cacheTimeout": null,
+                "combine": {
+                    "label": "Others",
+                    "threshold": 0
+                },
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {},
+                        "custom": {},
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": []
+                        }
+                    },
+                    "overrides": []
+                },
+                "fontSize": "80%",
+                "format": "none",
+                "gridPos": {
+                    "h": 11,
+                    "w": 12,
+                    "x": 0,
+                    "y": 27
+                },
+                "id": 32,
+                "interval": null,
+                "legend": {
+                    "header": "",
+                    "percentage": false,
+                    "show": true,
+                    "values": false
+                },
+                "legendType": "Right side",
+                "links": [],
+                "nullPointMode": "connected",
+                "pieType": "pie",
+                "pluginVersion": "7.4.3",
+                "strokeWidth": 1,
+                "targets": [
+                    {
+                        "format": "time_series",
+                        "group": [],
+                        "hide": false,
+                        "metricColumn": "none",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  max(date) as \"time\",\n  food,\n  count(food)\nFROM meals\nWHERE\n  $__timeFilter(date)\nGROUP BY food\norder by count(food) desc",
+                        "refId": "A",
+                        "select": [
+                            [
+                                {
+                                    "params": ["food"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "table": "meals",
+                        "timeColumn": "date",
+                        "timeColumnType": "date",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "timeFrom": null,
+                "timeShift": null,
+                "title": "Meals 🍽️",
+                "transparent": true,
+                "type": "grafana-piechart-panel",
+                "valueName": "total"
+            },
+            {
+                "datasource": "PostgreSQL",
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "fixedColor": "#56cfe1",
+                            "mode": "fixed"
+                        },
+                        "custom": {},
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "kcal"
+                    },
+                    "overrides": []
+                },
+                "gridPos": {
+                    "h": 10,
+                    "w": 12,
+                    "x": 12,
+                    "y": 27
+                },
+                "id": 30,
+                "options": {
+                    "displayMode": "basic",
+                    "orientation": "horizontal",
+                    "reduceOptions": {
+                        "calcs": ["lastNotNull"],
+                        "fields": "",
+                        "values": false
+                    },
+                    "showUnfilled": false,
+                    "text": {}
+                },
+                "pluginVersion": "7.4.3",
+                "targets": [
+                    {
+                        "delimiter": ",",
+                        "format": "time_series",
+                        "group": [],
+                        "header": true,
+                        "ignoreUnknown": false,
+                        "metricColumn": "none",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \n      avg(x.calories) as \"calories\",\n      x.day,\n      max(x.date)as \"time\"\nFROM (\nSELECT\n  sum(calories) as \"calories\",\n  date,\nmax(day) as \"day\"\nFROM\n  meals\nWHERE\n  $__timeFilter(date)\nGROUP BY date\n)x\nGROUP BY day\nORDER BY CASE\n             WHEN day = '''Monday''' THEN 1\n             WHEN day = '''Tuesday''' THEN 2\n             WHEN day = '''Wednesday''' THEN 3\n             WHEN day = '''Thursday''' THEN 4\n             WHEN day = '''Friday''' THEN 5\n             WHEN day = '''Saturday''' THEN 6\n             WHEN day = '''Sunday''' THEN 7\n             END ASC;\n",
+                        "refId": "A",
+                        "schema": [],
+                        "select": [
+                            [
+                                {
+                                    "params": ["value"],
+                                    "type": "column"
+                                }
+                            ]
+                        ],
+                        "skipRows": 0,
+                        "timeColumn": "time",
+                        "where": [
+                            {
+                                "name": "$__timeFilter",
+                                "params": [],
+                                "type": "macro"
+                            }
+                        ]
+                    }
+                ],
+                "timeFrom": null,
+                "timeShift": null,
+                "title": "Average Calories Consumed by Day ⚡",
+                "transparent": true,
+                "type": "bargauge"
+            }
+        ],
+        "refresh": false,
+        "schemaVersion": 27,
+        "style": "dark",
+        "tags": [],
+        "templating": {
+            "list": []
+        },
+        "time": {
+            "from": "now/w",
+            "to": "now"
+        },
+        "timepicker": {},
+        "timezone": "",
+        "title": "MyFitnessPal Grafana",
+        "uid": null
+    },
+    "folderId": 0,
+    "overwrite": false
+}

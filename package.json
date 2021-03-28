@@ -1,0 +1,16 @@
+{
+  "name": "myfitnesspal-grafana",
+  "version": "1.0.0",
+  "description": "creates a Grafana dashboard using MyFitnessPal CSV export",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harsh Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "pg": "^8.5.1"
+  }
+}

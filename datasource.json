@@ -1,0 +1,20 @@
+{
+    "orgId": 1,
+    "name": "PostgreSQL",
+    "type": "postgres",
+    "typeLogoUrl": "public/app/plugins/datasource/postgres/img/postgresql_logo.svg",
+    "access": "proxy",
+    "url": "localhost:5432",
+    "secureJsonData": {
+        "password": "admin"
+    },
+    "user": "postgres",
+    "database": "myfitnesspal",
+    "basicAuth": true,
+    "isDefault": true,
+    "jsonData": {
+        "postgresVersion": 1300,
+        "sslmode": "disable"
+    },
+    "readOnly": false
+}

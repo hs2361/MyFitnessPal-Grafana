@@ -1,0 +1,7 @@
+date,day,meal_index,meal,"food","calories",carbohydrates,fat,protein,sodium,sugar
+2021-03-17,Wednesday,0,breakfast,"bubba burger - Burger, 1 burger","420.0",0,35,25,85,0
+2021-03-17,Wednesday,1,lunch,"Caesar salad - Salad, 1 plate","200.0",10,14,5,380,2
+2021-03-17,Wednesday,2,dinner,"Pizza Pizza - Small Cheese Pizza, 1 slice","180.0",26,5,9,410,1
+2021-03-18,Thursday,0,breakfast,"Quick Add, 1 serving(s)","500.0",0,0,0,0,0
+2021-03-18,Thursday,1,lunch,"Pizza Pizza - Small Cheese Pizza, 1 container (6 slice)","1080.0",156,30,54,2460,6
+2021-03-16,Tuesday,1,lunch,"Pizza Pizza - Small Cheese Pizza, 1 container (6 slice)","1080.0",156,30,54,2460,6
